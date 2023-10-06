@@ -1,0 +1,125 @@
+@import "../../mixins.scss";
+
+:root {
+  --base-size: 1em;
+}
+
+.flex-container {
+  overflow: hidden;
+  display: flex;
+  min-height: 100vh;
+
+  .left-container {
+    background-color: white;
+    min-width: 100%;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    @include lg {
+      min-width: 55%;
+      flex: 0.45;
+      padding: 2rem;
+    }
+
+    .signup-form {
+      --base-size: 0.86em;
+    }
+
+    .login-form,
+    .signup-form {
+      width: 100%;
+      max-width: 600px;
+      @include lg {
+        padding: 1rem;
+      }
+    }
+    .title {
+      font-size: calc(var(--base-size) * 3);
+      font-weight: 600;
+    }
+    .subtext {
+      margin-top: calc(var(--base-size) * 2);
+      font-size: 1rem;
+    }
+    .signup-link,
+    .login-link {
+      text-decoration: underline;
+      cursor: pointer;
+      color: var(--black-lighter);
+    }
+    .google-login {
+      background-color: #e5e4e4;
+      // color: ;
+      width: 100%;
+      padding: calc(var(--base-size) * 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      margin-top: calc(var(--base-size) * 2);
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      &:hover {
+        background-color: var(--black3);
+        color: white;
+        transform: scale(0.9);
+      }
+
+      .google-icon {
+        margin-top: 0.19em;
+        margin-right: 0.9em;
+      }
+      .google-text {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+    }
+    .input-container {
+      margin-top: calc(var(--base-size) * 2);
+      display: flex;
+      flex-direction: column;
+    }
+    .input-field {
+      margin-top: calc(var(--base-size) * 0.8);
+      padding: calc(var(--base-size) * 0.6);
+      font-size: calc(var(--base-size) * 1.2);
+      outline: none;
+      transition: border-color 0.3s;
+      &:focus {
+        border-color: var(--black3);
+      }
+    }
+    .sign-in-btn,
+    .sign-up-btn {
+      background-color: var(--black2);
+      color: white;
+      width: calc(var(--base-size) * 11);
+      padding: 1rem;
+      border: none;
+      border-radius: 9999px;
+      margin-top: calc(var(--base-size) * 2.5);
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      &:hover {
+        opacity: 0.8;
+        transform: scale(0.9);
+      }
+    }
+  }
+  .right-container {
+    width: -webkit-fill-available;
+    background-image: url(/auth.jpg);
+    background-size: cover;
+    background-position: top center;
+    display: none;
+    background-color: #545252;
+    background-blend-mode: overlay;
+    z-index: -1;
+    filter: blur(4px);
+    @include lg {
+      display: block;
+    }
+  }
+}

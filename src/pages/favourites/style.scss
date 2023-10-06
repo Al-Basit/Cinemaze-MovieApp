@@ -1,0 +1,27 @@
+@import "../../mixins.scss";
+
+.favouritesPage {
+  min-height: 700px;
+  padding-top: 100px;
+
+  .pageTitle {
+    font-size: 34px;
+    line-height: 44px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .no-favourites {
+    color: var(--black-light);
+    font-size: 24px;
+  }
+  .content {
+    display: flex;
+    height: auto;
+    overflow: auto;
+    flex-flow: row wrap;
+    gap: 10px;
+    @include md {
+      gap: 20px;
+    }
+  }
+}

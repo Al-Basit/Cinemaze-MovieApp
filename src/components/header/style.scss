@@ -1,0 +1,229 @@
+@import "../../mixins.scss";
+
+.header {
+  position: fixed;
+  transform: translateY(0);
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  transition: all ease 0.5s;
+  z-index: 2;
+  &.top {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+  }
+  &.show {
+    background-color: var(--black3);
+  }
+  &.hide {
+    transform: translateY(-60px);
+  }
+
+  .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    cursor: pointer;
+    img {
+      height: 30px;
+
+      @include md {
+        height: 50px;
+      }
+    }
+  }
+  .menuItems {
+    list-style-type: none;
+    display: none;
+    align-items: center;
+    @include md {
+      display: flex;
+    }
+
+    .menuItem {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      margin: 0 15px;
+      color: white;
+      font-weight: 500;
+      position: relative;
+      &.searchIcon {
+        margin-right: 0;
+      }
+      svg {
+        font-size: 18px;
+      }
+      cursor: pointer;
+      &:hover {
+        color: var(--pink);
+      }
+    }
+  }
+
+  .user {
+    cursor: pointer;
+    svg {
+      color: #fff;
+      height: 34px;
+      width: 34px;
+      vertical-align: middle;
+    }
+  }
+
+  .loginBtn {
+    max-width: fit-content;
+    align-self: start;
+    background: var(--gradient);
+    color: var(--black-lighter);
+    border-radius: 100vmax;
+    display: inline-block;
+    transition: ease 0.3s;
+    font-size: 0.9em;
+    padding: 7px 10px;
+    @include sm {
+      font-size: 1.2em;
+      padding: 12px 20px;
+    }
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+
+  .mobileMenuItems {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    @include md {
+      display: none;
+    }
+    > svg {
+      font-size: 18px;
+      color: white;
+    }
+  }
+
+  &.mobileView {
+    background: var(--black3);
+    .menuItems {
+      display: flex;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: var(--black3);
+      flex-direction: column;
+      width: 100%;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      animation: mobileMenu 0.3s ease forwards;
+      .menuItem {
+        font-size: 20px;
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        margin: 0;
+        display: flex;
+        align-items: flex-start;
+        &:last-child,
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .searchBar {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    animation: mobileMenu 0.3s ease forwards;
+    .searchInput {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      margin-top: 10px;
+      width: 100%;
+      svg {
+        font-size: 20px;
+        flex-shrink: 0;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        outline: 0;
+        border: 0;
+        border-radius: 30px 0 0 30px;
+        padding: 0 15px;
+        font-size: 14px;
+        @include md {
+          height: 60px;
+          font-size: 20px;
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+  .userMenuItems {
+    display: flex;
+    min-width: 13em;
+    border-radius: 12px;
+    position: absolute;
+    right: 3%;
+    top: 92%;
+    padding: 25px;
+    gap: 25px;
+    list-style: none;
+    flex-direction: column;
+    color: #fff;
+    box-shadow: -2px -1px 9px var(--black3);
+    background-color: #001637;
+    transform: translateY(-600px);
+    transition: 0.4s;
+    &.show {
+      transform: translate(0);
+    }
+    > svg {
+      cursor: pointer;
+      align-self: end;
+    }
+    .userMenuItem {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 400;
+      padding-bottom: 5px;
+      transition: 0.3s;
+      &:last-child {
+        padding-top: 8px;
+        border-top: 1px solid #fff;
+        font-weight: 400;
+        margin-top: 40px;
+      }
+      &:hover {
+        color: var(--pink);
+      }
+      svg {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+@keyframes mobileMenu {
+  0% {
+    transform: translateY(-130%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
